@@ -7,8 +7,9 @@
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.321025641025641" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.321025641025641" />
         <entry key="app/src/main/res/layout/activity_link_info2.xml" value="0.15364583333333334" />
-        <entry key="app/src/main/res/layout/activity_link_information.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_link_information.xml" value="0.26785714285714285" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/xml/nfc_tech_filter.xml" value="0.16893115942028986" />
       </map>
     </option>
   </component>

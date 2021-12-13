@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="30dp"
     tools:context=".LinkInformation">
 
     <LinearLayout
@@ -48,6 +49,26 @@
             android:layout_width="match_parent"
             android:layout_height="136dp"
             android:text="Share" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/nfcContents"
+                android:layout_width="214dp"
+                android:layout_height="wrap_content"
+                android:text="receivedLink:" />
+
+            <TextView
+                android:id="@+id/receivedLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="link" />
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

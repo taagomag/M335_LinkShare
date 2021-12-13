@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.nfc.NfcAdapter;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.URLUtil;
@@ -15,9 +18,19 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     //NFC: Initialize attributes
-    NfcAdapter nftAdapter;
+
+    public final static String TAG = "nfc test";
+    public static final String Write_Detected = "NFC NOT DETECTED";
+    public static final String Write_Success = "TEXT WRITTEN SUCCESSFULLY";
+    public static final String Write_Error = "ERROR DURING WRITTING, TRY AGAIN";
+
+    NfcAdapter nfcAdapter;
     PendingIntent pendingIntent;
-    final static String TAG = "nfc test";
+    IntentFilter intentFilter;
+    boolean writeMode;
+    Tag myTag;
+    Context context;
+
 
     Button add;
     EditText txt;
@@ -30,8 +43,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Initialise NfcAdapter
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
+        //if Nfc is no available on the current Device
+        if(nfcAdapter == null) {
+            Toast.makeText(MainActivity.this, "Nfc is not available on this Device", Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
+        pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, this.getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
         ((EditText)findViewById(R.id.linkInputText)).setText("https:// ");
         txt = (EditText)findViewById(R.id.linkInputText);
         theListView = (ListView)findViewById(R.id.linkListView);
@@ -64,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "item clicked" + theListView.getItemAtPosition(position), Toast.LENGTH_LONG).show();
             }
         });
+
 
 
 
