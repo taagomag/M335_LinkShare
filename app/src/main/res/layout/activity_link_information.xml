@@ -11,7 +11,9 @@
         android:id="@+id/linkURL"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-110dp"
+        tools:layout_editor_absoluteY="-128dp">
 
         <TextView
             android:id="@+id/textView"
@@ -42,13 +44,8 @@
                 android:layout_weight="1"
                 android:text="TextView"
                 android:textSize="20sp" />
-        </LinearLayout>
 
-        <Button
-            android:id="@+id/btnShare"
-            android:layout_width="match_parent"
-            android:layout_height="136dp"
-            android:text="Share" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,6 +66,12 @@
                 android:layout_weight="1"
                 android:text="link" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnActivate"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:text="Share" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

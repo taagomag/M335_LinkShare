@@ -2,6 +2,7 @@ package com.zli.linkshare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +41,7 @@ public class LinkInformation extends AppCompatActivity {
     boolean writeMode;
     Tag myTag;
     Context context;
-    Button btnShare;
+    Button btnActivate;
     TextView receivedLink;
     TextView nfcContents;
 
@@ -50,10 +51,10 @@ public class LinkInformation extends AppCompatActivity {
         setContentView(R.layout.activity_link_information);
         receivedLink = (TextView) findViewById(R.id.receivedLink);
         nfcContents = (TextView) findViewById(R.id.nfcContents);
-        btnShare = findViewById(R.id.btnShare);
+        btnActivate = findViewById(R.id.btnActivate);
         context = LinkInformation.this;
 
-        btnShare.setOnClickListener(new View.OnClickListener() {
+        btnActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
@@ -123,19 +124,22 @@ public class LinkInformation extends AppCompatActivity {
     private void buildTagViews(NdefMessage[] msgs) {
         if (msgs == null || msgs.length == 0) return;
 
-        String text = "";
+        String url = "";
         byte[] payload = msgs[0].getRecords()[0].getPayload();
         String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16";
         int languageCodeLength = payload[0] & 0063;
 
         try{
-            text = new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
+            url = new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
 
         } catch (UnsupportedEncodingException e) {
             Log.e("UnsupportedEncoding", e.toString());
         }
-        nfcContents.setText("NFC Content: " + text);
+        nfcContents.setText("NFC Content: " + url);
+        Intent i = new Intent(LinkInformation.this, MainActivity.class);
+        i.putExtra("urlValue", url);
     }
+
     private void write(String text, Tag tag) throws IOException, FormatException {
         NdefRecord[] records = { createRecord(text) };
         NdefMessage message = new NdefMessage(records);

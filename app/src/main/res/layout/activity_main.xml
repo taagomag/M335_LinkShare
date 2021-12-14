@@ -11,7 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/title_LinkShare"
@@ -23,22 +25,28 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="165dp">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/linkInputText"
-                android:layout_width="265dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="40dp"
-                android:layout_marginTop="40dp"
-                android:hint="Add Link" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_margin="50dp"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/addLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Add Link" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/linkInputText"
+                    android:layout_width="265dp"
+                    android:layout_height="84dp"
+                    android:layout_marginHorizontal="40dp"
+                    android:hint="Add Link" />
+
+                <Button
+                    android:id="@+id/addLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_weight="1"
+                    android:text="Add Link" />
+            </LinearLayout>
 
         </com.google.android.material.textfield.TextInputLayout>
 
